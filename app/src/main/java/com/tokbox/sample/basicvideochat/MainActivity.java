@@ -203,6 +203,12 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             session.onResume();
 
             if ((session != null) && publisher != null ) {
+                Log.d(TAG, "onResume: Mic Permissions? " + EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.RECORD_AUDIO));
+                //If App don't have permission, don't publish Audio
+                publisher.setPublishAudio(EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.RECORD_AUDIO));
+
+
+                Log.d(TAG, "onResume: is Audio Published ? " + publisher.getPublishAudio());
                 if (publisher.getPublishAudio())
                     mButtonMuteUnmute.setText("Mute");
                 else
