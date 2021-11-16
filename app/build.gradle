@@ -2,12 +2,7 @@ plugins {
     id 'com.android.application'
 }
 
-//apply {
-//    from '../../commons.gradle'
-//}
-
 ext {
-    extAgpVersion="4.2.1"
     extCompileSdkVersion=30
     extBuildToolsVersion="30.0.2"
     extMinSdkVersion=16

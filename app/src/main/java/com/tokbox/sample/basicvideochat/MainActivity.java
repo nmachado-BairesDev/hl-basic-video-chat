@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                     finishWithMessage("Invalid OpenTokConfig. " + OpenTokConfig.getDescription());
                     return;
                 }
-
+                Log.d(TAG, "requestPermissions ... initializeSession...");
                 initializeSession(OpenTokConfig.API_KEY, OpenTokConfig.SESSION_ID, OpenTokConfig.TOKEN);
             }
         } else {

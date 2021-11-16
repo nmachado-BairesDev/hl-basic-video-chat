@@ -1,19 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-//    apply {
-//        from '../commons.gradle'
-//    }
     ext {
         extAgpVersion="4.2.1"
-        extCompileSdkVersion=30
-        extBuildToolsVersion="30.0.2"
-        extMinSdkVersion=16
-        extTargetSdkVersion=30
-        extVersionCode=1
-        extVersionName="1.0"
-        extMinifyEnabled=false
-        extOpentokSdkVersion="2.19.1"
     }
 
     repositories {
