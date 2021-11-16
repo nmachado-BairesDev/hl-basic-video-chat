@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         @Override
         public void onStreamCreated(PublisherKit publisherKit, Stream stream) {
             Log.d(TAG, "onStreamCreated: Publisher Stream Created. Own stream " + stream.getStreamId());
+            Log.d(TAG, "onStreamCreated: Mic Permissions? " + EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.RECORD_AUDIO));
+            Log.d(TAG, "onStreamCreated: is Audio Published ? " + publisherKit.getPublishAudio());
         }
 
         @Override
@@ -83,7 +85,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
             publisher = new Publisher.Builder(MainActivity.this).build();
             publisher.setPublisherListener(publisherListener);
-            publisher.setPublishAudio(false);
+
+            //If App don't have permission, don't publish Audio
+            if (!EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.RECORD_AUDIO))
+                publisher.setPublishAudio(false);
+
             publisher.getRenderer().setStyle(BaseVideoRenderer.STYLE_VIDEO_SCALE, BaseVideoRenderer.STYLE_VIDEO_FILL);
             
             publisherViewContainer.addView(publisher.getView());
